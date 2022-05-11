@@ -1,0 +1,107 @@
+
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width,initial-scale=1.0">
+        <!-- <link rel="stylesheet" href="index.css"> -->
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <title>Vue 3: iterate through object</title>
+
+        <style>
+
+            body {
+                text-align: center;
+                color: white;
+                background-color: black;
+                background-image: url("img/sky.png");
+                background-repeat: no-repeat;
+                background-size: cover;
+                background-attachment: fixed;
+            }
+            [v-cloak] {
+                display: none;
+            }
+            li {
+                list-style: none;
+                border: 1px white dashed;
+            }
+            .flex {
+                display: flex;
+                justify-content: space-between;
+                flex-wrap: wrap;
+            }
+            figcaption {
+                font: italic smaller sans-serif;
+                padding: 3px;
+            }
+            img {
+                border-radius: 10px;
+                max-width: 100%;
+                height: auto;
+            }
+            ul {
+                padding-left: 0px;
+            }
+        </style>
+        
+    </head>
+   
+    <body><p>Vue 3: iterate through array <br />click on the image to resize by 1.25</p>
+
+        <div id="app" v-cloak>
+            
+            <ul class="flex">
+                <li v-for="item in items">
+                    <figure>
+                        <img v-bind:src="item.name" v-bind:alt="item.fig" v-bind:id="item.id" v-bind:style="item.styleObject" v-on:click="chg($event, item.id)">
+                        <figcaption>{{item.fig}}</figcaption>
+                    </figure>
+                </li>
+            </ul>
+
+        </div>
+        
+        <script src="https://unpkg.com/vue@next"></script>
+
+        <script>
+
+            let app = Vue.createApp({
+                data: function () {
+                    return {
+
+                        items: [
+                        { id: 0, name: "img/beer.png", fig: "number 1", styleObject: {width: 200 + 'px', height: 100 + 'px', transition: "all 1s ease-in"}},
+                        
+                        { id: 1, name: "img/dev-test.png", fig: "number 2", styleObject: {width: 200 + 'px', height: 100 + 'px', transition: "all 1s ease-in"} },
+                        { id: 2, name: "img/face.png", fig: "number 3", styleObject: {width: 200 + 'px', height: 100 + 'px', transition: "all 1s ease-in"} },
+                        { id: 3, name: "img/fast-foods.png", fig: "number 4", styleObject: {width: 200 + 'px', height: 100 + 'px', transition: "all 1s ease-in"} },
+                        { id: 4, name: "img/go-around.png", fig: "number 5", styleObject: {width: 200 + 'px', height: 100 + 'px', transition: "all 1s ease-in"} },
+                        { id: 5, name: "img/happy-client-1.png", fig: "number 6", styleObject: {width: 200 + 'px', height: 100 + 'px', transition: "all 1s ease-in"} },
+                        { id: 6, name: "img/headache.png", fig: "number 7", styleObject: {width: 200 + 'px', height: 100 + 'px', transition: "all 1s ease-in"} },
+                        { id: 7, name: "img/lotto.png", fig: "number 8", styleObject: {width: 200 + 'px', height: 100 + 'px', transition: "all 1s ease-in"} },
+                        { id: 8, name: "img/miserable.png", fig: "number 9", styleObject: {width: 200 + 'px', height: 100 + 'px', transition: "all 1s ease-in"} },
+                        { id: 9, name: "img/sick.png", fig: "number 10", styleObject: {width: 200 + 'px', height: 100 + 'px', transition: "all 1s ease-in"} },
+                        { id: 10, name: "img/runny-nose.png", fig: "number 11", styleObject: {width: 200 + 'px', height: 100 + 'px', transition: "all 1s ease-in"} },
+                        { id: 11, name: "img/pollen.png", fig: "number 12", styleObject: {width: 200 + 'px', height: 100 + 'px', transition: "all 1s ease-in"} },
+                        { id: 12, name: "img/test-code.png", fig: "number 13", styleObject: {width: 200 + 'px', height: 100 + 'px', transition: "all 1s ease-in"} },
+                        { id: 13, name: "img/tic-tac-1.png", fig: "number 14", styleObject: {width: 200 + 'px', height: 100 + 'px', transition: "all 1s ease-in"} },
+                        { id: 14, name: "img/time-on-page-1.png", fig: "number 15", styleObject: {width: 200 + 'px', height: 100 + 'px', transition: "all 1s ease-in"} },
+                        { id: 15, name: "img/train-10.png", fig: "number 16", styleObject: {width: 200 + 'px', height: 100 + 'px', transition: "all 1s ease-in"} }
+                        ]
+                    }
+                },
+                methods: {
+                    chg(e, y) {
+                        this.items[y].styleObject.width = parseInt(this.items[y].styleObject.width) * 1.25 + "px"
+                        this.items[y].styleObject.height = parseInt(this.items[y].styleObject.height) * 1.25 + "px"
+                    }
+                }
+            })
+
+            app.mount("#app")
+            
+        </script>
+    
+</body>
+</html>
